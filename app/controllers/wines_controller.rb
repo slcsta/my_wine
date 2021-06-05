@@ -2,11 +2,13 @@ class WinesController < ApplicationController
 
     get "/wines" do
         @wines = Wine.all #see all of the wines
-        erb :index
+        erb :'wines/index'
     end
 
     get "/wines/:id" do
         #to see an invidual wine
+        @wine = Wine.find(params[:id])
+        erb :'show_wine'
     end
 
     get "/wines/new" do 
