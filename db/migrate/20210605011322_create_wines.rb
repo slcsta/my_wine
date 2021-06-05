@@ -1,9 +1,11 @@
 class CreateWines < ActiveRecord::Migration[5.2]
   def change
-    t.string :producer_name
-    t.string  :AVA
-    t.integer :vintage
-    t.string: :varietal
-    
+    create_table :wines do |t|
+      t.string :producer_name
+      t.string  :ava
+      t.integer :vintage
+      t.string :varietal
+      t.integer :user_id
+    end 
   end
 end
