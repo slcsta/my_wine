@@ -7,3 +7,4 @@ end
 use UsersController
 use WinesController
 run ApplicationController
+use Rack::MethodOverride
