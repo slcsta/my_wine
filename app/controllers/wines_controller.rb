@@ -18,6 +18,7 @@ class WinesController < ApplicationController
 
     get "/wines/:id/edit" do 
         #editing a specific wine
+        @wine = Wine.find(params[:id])
     end
 
     post "/wines" do
@@ -28,9 +29,11 @@ class WinesController < ApplicationController
 
     patch "/wines/:id" do
         #editing a specific wine
+        @wine = Wine.find(params[:id])
     end
 
     delete "/wines/:id" do
         #deleting an individual wine
+        @wine = Wine.find(params[:id])
     end
 end
