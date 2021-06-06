@@ -19,13 +19,19 @@ class WinesController < ApplicationController
     get "/wines/:id/edit" do 
         #editing a specific wine
         @wine = Wine.find(params[:id])
+        erb :'wines/edit_wine'
     end
 
     post "/wines" do
         #create new wines
-        @movie = Wine.new(producer_name: params[:procuder_name])
-        @movie.save
+        wine = Wine.new(params)
+        wines = Wine.all
+        wine.save
+        # go to show or index after create a wine
+        # use a redirect here - super duper important
+        redirect :'/wines'
     end
+
 
     patch "/wines/:id" do
         #editing a specific wine
