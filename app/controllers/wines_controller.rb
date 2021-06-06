@@ -5,14 +5,15 @@ class WinesController < ApplicationController
         erb :'wines/index'
     end
 
+    get "/wines/new" do 
+        #form for creating a new wine
+        erb :'wines/new'
+    end
+
     get "/wines/:id" do
         #to see an invidual wine
         @wine = Wine.find(params[:id])
-        erb :'show_wine'
-    end
-
-    get "/wines/new" do 
-        #form for creating a new wine
+        erb :'wines/show_wine'
     end
 
     get "/wines/:id/edit" do 
@@ -21,6 +22,8 @@ class WinesController < ApplicationController
 
     post "/wines" do
         #create new wines
+        @movie = Wine.new(producer_name: params[:procuder_name])
+        @movie.save
     end
 
     patch "/wines/:id" do
