@@ -13,7 +13,6 @@ class WinesController < ApplicationController
     get "/wines/:id" do
         #to see an invidual wine
         @wine = Wine.find(params[:id])
-        binding.pry
         erb :'wines/show_wine'
     end
 

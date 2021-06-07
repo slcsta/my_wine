@@ -1,6 +1,6 @@
 <h1><%= @wine.producer_name %></h1>
 
-<a href="/movies/<%= @movies.id %>/edit">EDIT</a>
+<a href="/wines/<%= @wine.id %>/edit">EDIT</a>
 
 <form method="POST" action="/wines/<%= @wine.id %>">
 <input type="hidden" name="_method" value="DELETE"/>
