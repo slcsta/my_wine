@@ -36,6 +36,9 @@ class WinesController < ApplicationController
     patch "/wines/:id" do
         #editing a specific wine
         @wine = Wine.find(params[:id])
+        # because there are so many attributes here, we want to do a nested hash
+        @wine.update(params["wine"])
+        redirect :"wines/#{@wine.id}" 
     end
 
     delete "/wines/:id" do
