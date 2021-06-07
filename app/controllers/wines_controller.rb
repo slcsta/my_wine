@@ -13,6 +13,7 @@ class WinesController < ApplicationController
     get "/wines/:id" do
         #to see an invidual wine
         @wine = Wine.find(params[:id])
+        binding.pry
         erb :'wines/show_wine'
     end
 
@@ -44,5 +45,8 @@ class WinesController < ApplicationController
     delete "/wines/:id" do
         #deleting an individual wine
         @wine = Wine.find(params[:id])
+        # use destroy - better than delete here
+        @movie.destroy
+        redirect :'/movies'
     end
 end

@@ -2,6 +2,6 @@
 
 <form method="POST" action="/wines/<%= @wine.id %>">
 <input type="hidden" name="_method" value="PATCH"/>
-<p>Producer Name: <input type="text" name="wine[producer_name]" value="<%= @movie.producer_name %>"/></p>
+<p>Producer Name: <input type="text" name="wine[producer_name]" value="<%= @wine.producer_name %>"/></p>
 <input type="submit" value="Update Wine" id="submit" />
 </form>
