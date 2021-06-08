@@ -23,7 +23,19 @@ class UsersController < ApplicationController
         end
     end
 
-
+    get '/login' do
+        # render the view in app/views/users/login.erb
+        erb :'/login'
+    end
+    
+    post '/login' do
+        @user = User.find_by(email: params[:email])
+        if @user
+          session[:user_id] = @user.id
+          redirect '/wines'
+        end
+        redirect '/login'
+    end
 
     post '/logout' do
         session.clear 
