@@ -15,11 +15,12 @@ ActiveRecord::Schema.define(version: 2021_06_05_011322) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
-    t.string "password"
+    t.string "password_digest"
   end
 
   create_table "wines", force: :cascade do |t|
     t.string "producer_name"
+    t.string "wine_name"
     t.string "ava"
     t.integer "vintage"
     t.string "varietal"

@@ -1,4 +1,6 @@
 
+# UPDATE MY SEED DATA to find_or_create_by to avoid duplication
+
 users = [
     {username: 'rsmith', email: 'rsmith@mail.com'},
     {username: 'bjones', email: 'bjones@mail.com'}
