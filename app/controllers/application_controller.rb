@@ -20,6 +20,7 @@ class ApplicationController < Sinatra::Base
     def logged_in?
       !!current_user
     end
+  end
 
   #making helpers
   #assigning a current user

@@ -13,23 +13,23 @@ class WinesController < ApplicationController
     get "/wines/:id" do
         #to see an invidual wine
         @wine = Wine.find(params[:id])
-        erb :'wines/show_wine'
+        erb :'wines/show'
     end
 
     get "/wines/:id/edit" do 
         #editing a specific wine
         @wine = Wine.find(params[:id])
-        erb :'wines/edit_wine'
+        erb :'wines/edit'
     end
 
     post "/wines" do
         #create new wines
         wine = Wine.new(params)
-        wines = Wine.all
+        wine.user = current_user # setting that current_user to that wine
         wine.save
         # go to show or index after create a wine
         # use a redirect here - super duper important
-        redirect :'/wines'
+        redirect :'/index'
     end
 
 

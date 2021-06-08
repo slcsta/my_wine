@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
 
-    get '/sign_up' do
-        erb :'users/sign_up'
+    get '/signup' do
+        erb :'users/signup'
     end
 
-    post '/sign_up' do
+    post '/signup' do
         u = User.new(params)
-        # We need to do:
+        # We need to:
         # 1. instantiate a user
         # 2. ensure user signed up with valid data
         # 3. if user signed up successfully, then redirect
@@ -14,14 +14,16 @@ class UsersController < ApplicationController
     
         #if u.email.blank? || u.password.blank? || User.find_by_email(params["email"])
         if !u.save
-            redirect '/sign_up'
+            redirect '/signup'
         else
             u.save
-            binding.pry
+            #binding.pry
             session[:user_id] = u.id
             redirect '/wines' 
         end
     end
+
+
 
     post '/logout' do
         session.clear 
