@@ -1,9 +1,14 @@
 <h1>My Wines:</h1>
-<h2>If Logged In, Show Me Username: <%= User.find_by(id: session[:user_id])</h2>
+<% if logged_in? %>
+<h2>If Logged In, Show Me Username: <%= current_user.username(id: session[:user_id])</h2>
+<% end %>
 <ul>
 <% @wines.each do |wine| %>
-    <li><a href="/wines/<%= wine.id %>"><%=wine.producer_name %></a></li>
+    <li><a href="/wines/<%= wine.id %>"><%= wine.producer_name %></a></li>
 <% end %>
 </ul>
 
-<a> href </a>
+<form method="POST" action="/logout">
+<input type="submit" value="Log Out">
+</form>
+

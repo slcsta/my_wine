@@ -22,4 +22,9 @@ class UsersController < ApplicationController
             redirect '/wines' 
         end
     end
+
+    post '/logout' do
+        session.clear 
+        redirect '/wines'
+    end
 end
