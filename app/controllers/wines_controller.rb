@@ -32,7 +32,6 @@ class WinesController < ApplicationController
         redirect :'/index'
     end
 
-
     patch "/wines/:id" do
         #editing a specific wine
         @wine = Wine.find(params[:id])
