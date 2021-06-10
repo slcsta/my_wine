@@ -8,7 +8,7 @@ class WinesController < ApplicationController
     get "/wines/new" do 
         #form for creating a new wine
         erb :'wines/new'
-    end
+    end 
 
     get "/wines/:id" do
         #to see an invidual wine
@@ -29,8 +29,16 @@ class WinesController < ApplicationController
         wine.save
         # go to show or index after create a wine
         # use a redirect here - super duper important
-        redirect :'/index'
+        redirect :'wines/show'
     end
+
+    
+    #   post '/recipes' do
+    #     #create action responds to a post request and creates a new recipe based on the 
+    #     #params from the form and saves it to the database
+    #     @recipe = Recipe.create(:name => params[:name], :ingredients => params[:ingredients], :cook_time => params[:cook_time])
+    #     redirect to "/recipes/#{@recipe.id}" 
+    #   end
 
     patch "/wines/:id" do
         #editing a specific wine
@@ -44,7 +52,7 @@ class WinesController < ApplicationController
         #deleting an individual wine
         @wine = Wine.find(params[:id])
         # use destroy - better than delete here
-        @movie.destroy
-        redirect :'/movies'
+        @wine.destroy
+        redirect :'/wines'
     end
 end

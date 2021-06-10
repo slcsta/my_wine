@@ -14,12 +14,12 @@ class UsersController < ApplicationController
     
         #if u.email.blank? || u.password.blank? || User.find_by_email(params["email"])
         if !user.save
-            redirect '/signup'
+            redirect '/signup' # maybe instead of redirecting to '/signup' redirect to failure or error page with a button to sign-up
         else
             user.save
             #binding.pry
             session[:user_id] = user.id
-            redirect '/wines' 
+            redirect '/login' 
         end
     end
 
@@ -39,6 +39,6 @@ class UsersController < ApplicationController
 
     post '/logout' do
         session.clear 
-        redirect '/wines'
+        redirect '/'
     end
 end

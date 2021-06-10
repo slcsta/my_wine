@@ -5,11 +5,14 @@
 <% end %>
 <ul>
 <% @wines.each do |wine| %>
-    <li><a href="/wines/<%= wine.id %>"><%= wine.producer_name %></a></li>
+    <li>Produer Name: <a href="/wines/<%= wine.id %>" <%= wine.producer_name %></a></li>
+    <li>Wine Name: <%= wine.wine_name %></a></li>
+    <li>American Viticultural Area: <%= wine.ava %></a></li>
+    <li>Vintage: <%= wine.vintage %></a></li>
+    <li>Varietal: <%= wine.varietal %></a></li>
 <% end %>
 </ul>
 
 <form method="POST" action="/logout">
 <input type="submit" value="Log Out">
 </form>
-
