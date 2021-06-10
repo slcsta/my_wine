@@ -1,15 +1,10 @@
-<h1>My Wines:</h1>
-
+<h1>List of Wines:</h1>
 <% if logged_in? %>
-<h2><%= Username: <%= current_user.username %></h2>
+<h2><%= Welcome, <%= current_user.username %></h2>
 <% end %>
 <ul>
 <% @wines.each do |wine| %>
-    <li>Produer Name: <a href="/wines/<%= wine.id %>" <%= wine.producer_name %></a></li>
-    <li>Wine Name: <%= wine.wine_name %></a></li>
-    <li>American Viticultural Area: <%= wine.ava %></a></li>
-    <li>Vintage: <%= wine.vintage %></a></li>
-    <li>Varietal: <%= wine.varietal %></a></li>
+    <li><a href="/wines/<%= wine.id %>" <%= wine.producer_name %></a></li>
 <% end %>
 </ul>
 

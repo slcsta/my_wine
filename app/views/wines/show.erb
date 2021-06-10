@@ -1,7 +1,12 @@
 <h1><%= @wine.producer_name %></h1>
+<h2><%= Wine Name: <%= @wine.wine_name %></h2>
+<h2>American Viticultural Area: <%= @wine.ava %></h2>
+<h2>Vintage: <%= @wine.vintage %></h2>
+<h2>Varietal: <%= @wine.varietal %></h2>
 
 <a href="/wines/<%= @wine.id %>/edit">EDIT</a>
 
 <form method="POST" action="/wines/<%= @wine.id %>">
 <input type="hidden" name="_method" value="DELETE">
 <input type="submit" value="Delete Wine">
+</form>
