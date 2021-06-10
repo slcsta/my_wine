@@ -1,7 +1,7 @@
 <h1>My Wines:</h1>
 
 <% if logged_in? %>
-<h2>If Logged In, Show Me Username: <%= current_user.username %></h2>
+<h2><%= Username: <%= current_user.username %></h2>
 <% end %>
 <ul>
 <% @wines.each do |wine| %>

@@ -1,13 +1,13 @@
 <h1> Update: <%= @wine.producer_name %></h1>
 
 <form method="POST" action="/wines/<%= @wine.id %>">
-<input type="hidden" name="_method" value="PATCH"/>
+<input type="hidden" name="_method" value="PATCH">
 
-<p>Producer Name: <input type="text" name="wine[producer_name]" value="<%= @wine.producer_name %>"/></p>
+<p>Producer Name: <input type="text" name="wine[producer_name]" value="<%= @wine.producer_name %>"></p>
 <p>Wine Name: <input type="text" name="wine[wine_name]" value="<%= @wine.wine_name %>"></p>
 <p>American Viticultural Area: <input type="text" name="wine[ava]" value="<%= @wine.ava %>"></p>
 <p>Vintage: <input type="text" name="wine[vintage]" value="<%= @wine.vintage %>"></p>
 <p>Varietal: <input type="text" name="wine[varietal]" value="<%= @wine.varietal %>"></p>
 
-<input type="submit" value="Update Wine" id="submit" />
+<input type="submit" value="Update Wine" id="submit">
 </form>

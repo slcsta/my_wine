@@ -17,11 +17,16 @@ class UsersController < ApplicationController
             redirect '/signup' # maybe instead of redirecting to '/signup' redirect to failure or error page with a button to sign-up
         else
             user.save
-            #binding.pry
             session[:user_id] = user.id
             redirect '/login' 
         end
     end
+
+    # get '/' do
+    #     @user = User.find(session[:user_id])
+    #     erb :show
+    # end
+
 
     get '/login' do
         # render the view in app/views/users/login.erb
@@ -29,16 +34,27 @@ class UsersController < ApplicationController
     end
     
     post '/login' do
-        @user = User.find_by(email: params[:email]) # I don't think I need an instance variable here - *note:review that
-        if @user && user.authenticate(params[:password])
-          session[:user_id] = @user.id
+        user = User.find_by(username: params[:username]) # I don't think I need an instance variable here - *note:review that
+        if user && user.authenticate(params[:password])
+          session[:user_id] = user.id
           redirect '/wines'
+        else
+            redirect '/login' # do i want an error here? and then option to try logging in again?
         end
-        redirect '/login'
     end
 
     post '/logout' do
         session.clear 
         redirect '/'
+    end
+
+    helpers do
+        def logged_in?
+            !!session[:user_id]
+        end
+
+        def current_user
+            User.find(session[:user_id])
+        end
     end
 end
