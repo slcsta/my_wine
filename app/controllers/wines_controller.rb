@@ -32,14 +32,6 @@ class WinesController < ApplicationController
         redirect :'wines/show'
     end
 
-    
-    #   post '/recipes' do
-    #     #create action responds to a post request and creates a new recipe based on the 
-    #     #params from the form and saves it to the database
-    #     @recipe = Recipe.create(:name => params[:name], :ingredients => params[:ingredients], :cook_time => params[:cook_time])
-    #     redirect to "/recipes/#{@recipe.id}" 
-    #   end
-
     patch "/wines/:id" do
         #editing a specific wine
         @wine = Wine.find(params[:id])
