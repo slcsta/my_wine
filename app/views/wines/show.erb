@@ -3,7 +3,7 @@
 <h2>American Viticultural Area: <%= @wine.ava %></h2>
 <h2>Vintage: <%= @wine.vintage %></h2>
 <h2>Varietal: <%= @wine.varietal %></h2>
-
+<% if @wine.user == current_user %>
 <a href="/wines/<%= @wine.id %>/edit">EDIT</a>
 
 <form method="POST" action="/wines/<%= @wine.id %>">

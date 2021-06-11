@@ -25,6 +25,9 @@ class WinesController < ApplicationController
         end
         #editing a specific wine
         @wine = Wine.find(params[:id])
+        if @wine.user != current_user
+            redirect '/movies'
+        end
         erb :'wines/edit'
     end
 
@@ -33,11 +36,10 @@ class WinesController < ApplicationController
             redirect to '/login'
         end
         #create new wines
-        wine = Wine.new(params)
-        wine.user = current_user # setting that current_user to that wine
-        wine.save
+        @wine = Wine.new(params)
+        @wine.user_id = session[:user_id] # setting that current_user to that wine
+        @wine.save
         # go to show or index after create a wine
-        # use a redirect here - super duper important
         redirect :'wines/show'
     end
 
@@ -47,6 +49,9 @@ class WinesController < ApplicationController
         end
         #editing a specific wine
         @wine = Wine.find(params[:id])
+        if @wine.user != current_user
+            redirect '/movies'
+        end
         # because there are so many attributes here, we want to do a nested hash
         @wine.update(params["wine"])
         redirect :"wines/#{@wine.id}" 
@@ -58,6 +63,9 @@ class WinesController < ApplicationController
         end
         #deleting an individual wine
         @wine = Wine.find(params[:id])
+        if @wine.user != current_user
+            redirect '/movies'
+        end
         # use destroy - better than delete here
         @wine.destroy
         redirect :'/wines'
