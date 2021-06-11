@@ -1,11 +1,12 @@
-<h1>List of Wines:</h1>
 <% if logged_in? %>
-<h2>Welcome, <%= current_user.username %></h2>
-<% end %>
-<ul>
-<% @wines.each do |wine| %>
-    <li><a href="/wines/<%= wine.id %>"><%= wine.producer_name %></a></li>
+    <h1>List of Wines:</h1>
+    <h2>Welcome, <%= current_user.username %></h2>
+    <ul>
+    <% @wines.each do |wine| %>
+        <li><a href="/wines/<%= wine.id %>"><%= wine.producer_name %></a></li>
+    <% end %>
 <% end %>
 </ul>
+
 
 

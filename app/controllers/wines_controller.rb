@@ -32,7 +32,7 @@ class WinesController < ApplicationController
         @wine.user_id = session[:user_id] # setting that current_user to that wine
         @wine.save
         # go to show or index after create a wine
-        redirect :'wines/show'
+        redirect :"wines/#{@wine.id}"
     end
 
     patch "/wines/:id" do
@@ -58,7 +58,8 @@ class WinesController < ApplicationController
 private
     def redirect_if_not_authorized
         if @wine.user != current_user
-            redirect '/movies'
+            redirect '/wines'
         end
     end
 end
+
