@@ -22,8 +22,10 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-  #making helpers
-  #assigning a current user
-
-
+  private
+  def redirect_if_not_logged_in
+    if !logged_in?
+      redirect to '/login'
+    end
+  end
 end

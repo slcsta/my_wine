@@ -6,9 +6,7 @@ class WinesController < ApplicationController
     end
 
     get "/wines/new" do 
-        if !logged_in?
-            redirect to '/login'
-        end
+        redirect_if_not_logged_in
         #form for creating a new wine
         erb :'wines/new'
     end 
@@ -20,21 +18,15 @@ class WinesController < ApplicationController
     end
 
     get "/wines/:id/edit" do 
-        if !logged_in?
-            redirect to '/login'
-        end
+        redirect_if_not_logged_in
         #editing a specific wine
         @wine = Wine.find(params[:id])
-        if @wine.user != current_user
-            redirect '/movies'
-        end
+        redirect_if_not_authorized
         erb :'wines/edit'
     end
 
     post "/wines" do
-        if !logged_in?
-            redirect to '/login'
-        end
+        redirect_if_not_logged_in
         #create new wines
         @wine = Wine.new(params)
         @wine.user_id = session[:user_id] # setting that current_user to that wine
@@ -44,30 +36,29 @@ class WinesController < ApplicationController
     end
 
     patch "/wines/:id" do
-        if !logged_in?
-            redirect to '/login'
-        end
+        redirect_if_not_logged_in
         #editing a specific wine
         @wine = Wine.find(params[:id])
-        if @wine.user != current_user
-            redirect '/movies'
-        end
+        redirect_if_not_authorized
         # because there are so many attributes here, we want to do a nested hash
         @wine.update(params["wine"])
         redirect :"wines/#{@wine.id}" 
     end
 
     delete "/wines/:id" do
-        if !logged_in?
-            redirect to '/login'
-        end
+        redirect_if_not_logged_in
         #deleting an individual wine
         @wine = Wine.find(params[:id])
-        if @wine.user != current_user
-            redirect '/movies'
-        end
+        redirect_if_not_authorized
         # use destroy - better than delete here
         @wine.destroy
         redirect :'/wines'
+    end
+
+private
+    def redirect_if_not_authorized
+        if @wine.user != current_user
+            redirect '/movies'
+        end
     end
 end

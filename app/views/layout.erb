@@ -5,17 +5,33 @@
 
     <title>MyWine</title>
 
-    <a href="/wines">Wines</a> <a href="/wines/new">Add Wine</a> <a href="/wines/edit">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
-  <body>
-    <div class="wrapper">
+
+  <body>  
+  <nav>
+  <ul>
+  <% if !logged_in? %>
+  <li><a href="/signup">Create New Account</a></li>
+  <li><a href="/login">Log In</a></li>
+  <% end %>
+  <% if logged_in? %>
+  <li><a href="/wines">Wines</a></li>
+  <li><a href="/wines/new">Add Wine</a></li>
+  <% end %>
+  </ul>
+  </nav>
+      <div class="wrapper">
 
         <%= yield %>
 
+      <% if logged_in? %>
+      <form method="POST" action="/logout">
+      <input type="submit" value="Log Out">
+      </form>
+      <% end %>
       <footer class="branding">
         <small>&copy; 2021 <strong>MyWine</strong></small>
       </footer>
