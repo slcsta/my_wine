@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     end
     
     post '/login' do
-        user = User.find_by(username: params[:username]) # I don't think I need an instance variable here - *note:review that
+        user = User.find_by_email(params[:email]) # I don't think I need an instance variable here - *note:review that
         if user && user.authenticate(params[:password])
           session[:user_id] = user.id
           redirect '/wines'

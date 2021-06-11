@@ -6,6 +6,9 @@ class WinesController < ApplicationController
     end
 
     get "/wines/new" do 
+        if !logged_in?
+            redirect to '/login'
+        end
         #form for creating a new wine
         erb :'wines/new'
     end 
@@ -17,12 +20,18 @@ class WinesController < ApplicationController
     end
 
     get "/wines/:id/edit" do 
+        if !logged_in?
+            redirect to '/login'
+        end
         #editing a specific wine
         @wine = Wine.find(params[:id])
         erb :'wines/edit'
     end
 
     post "/wines" do
+        if !logged_in?
+            redirect to '/login'
+        end
         #create new wines
         wine = Wine.new(params)
         wine.user = current_user # setting that current_user to that wine
@@ -33,6 +42,9 @@ class WinesController < ApplicationController
     end
 
     patch "/wines/:id" do
+        if !logged_in?
+            redirect to '/login'
+        end
         #editing a specific wine
         @wine = Wine.find(params[:id])
         # because there are so many attributes here, we want to do a nested hash
@@ -41,6 +53,9 @@ class WinesController < ApplicationController
     end
 
     delete "/wines/:id" do
+        if !logged_in?
+            redirect to '/login'
+        end
         #deleting an individual wine
         @wine = Wine.find(params[:id])
         # use destroy - better than delete here
