@@ -34,6 +34,7 @@ class UsersController < ApplicationController
           session[:user_id] = user.id
           redirect '/wines'
         else
+            flash[:message] = "Error! Please Try Again"
             redirect '/login' # do i want an error here? and then option to try logging in again?
         end
     end
