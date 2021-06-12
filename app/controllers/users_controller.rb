@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     
         #if u.email.blank? || u.password.blank? || User.find_by_email(params["email"])
         if !user.save
+            flash[:message] = "Error! Please Try Again"
             redirect '/signup' # maybe instead of redirecting to '/signup' redirect to failure or error page with a button to sign-up
         else
             user.save
