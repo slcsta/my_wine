@@ -1,4 +1,4 @@
-<h1>Add a New Wine Here: </h1>
+<h1>Adding New Wine: </h1>
 
 <form method="POST" action="/wines">
 <p>Producer Name: <input type="text" name="producer_name"></p>
@@ -11,6 +11,17 @@
 
 <p>Varietal: <input type="text" name="varietal"></p>
 
+<p>Rating: <select name="rating"></p>
+    <option value=""></option>
+    <option value="outstanding">Outstanding</option> 
+    <option value="good">Good</option>
+    <option value="okay">Okay</option>
+    <option value="subpar">Subpar</option>
+    <option value="terrible">Terrible</option>
+</select>
+<p>Tasting Notes: </p>
+<textarea name="tasting_notes" cols="20" rows="4">Enter your notes...</textarea>
+<br>
 <input type="submit" id="submit" value="Create Wine">
 </form>
 

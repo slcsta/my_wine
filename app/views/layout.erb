@@ -9,27 +9,28 @@
 
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
-
-  <body>  
-  <nav>
-  <ul>
-  <% if !logged_in? %>
-  <li><a href="/signup">Create New Account</a></li>
-  <li><a href="/login">Log In</a></li>
-  <% end %>
-  <% if logged_in? %>
-  <li><a href="/wines">Wines</a></li>
-  <li><a href="/wines/new">Add Wine</a></li>
-  <% end %>
-  </ul>
+   <body>  
+    <nav>
+     <p>
+      <ul>
+      <% if !logged_in? %>
+       <li><a href="/signup">Create New Account</a></li> 
+       <li><a href="/login">Log In</a></li>
+      <% end %>
+      <% if logged_in? %>
+       <li><a href="/wines">Wines</a></li> 
+       <li><a href="/wines/new">Add Wine</a></li>
+      <% end %>
+      </ul>
+    </p>
   </nav>
       <div class="wrapper">
 
         <%= yield %>
 
       <% if logged_in? %>
-      <form method="POST" action="/logout">
-      <input type="submit" value="Log Out">
+        <form method="POST" action="/logout">
+        <input type="submit" value="Log Out">
       </form>
       <% end %>
       <footer class="branding">

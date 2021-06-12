@@ -22,12 +22,6 @@ class UsersController < ApplicationController
         end
     end
 
-    # get '/' do
-    #     @user = User.find(session[:user_id])
-    #     erb :show
-    # end
-
-
     get '/login' do
         # render the view in app/views/users/login.erb
         erb :'users/login'
@@ -42,6 +36,12 @@ class UsersController < ApplicationController
             redirect '/login' # do i want an error here? and then option to try logging in again?
         end
     end
+
+    get "/users/:wine" do
+        @user = User.find_by(params[:wine]) #see all of the users wines
+        erb :'users/show'
+    end
+
 
     post '/logout' do
         session.clear 

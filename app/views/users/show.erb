@@ -1,5 +1,6 @@
-<h1>Welcome</h1>
-
-<p>I am not sure what goest here - This comes after user signs up/is loggedin but maybe i want to go to create a wine</p>
-
-<p><a href="/logout">Log Out</a></p>
+<h2>All wines for <%= @user.username %>:</h2>
+<ul>
+<% @user.wines.each do |wine| %>
+    <li><p><a href="/items/<%= wine.id %>"<%=wine.producer_name %></a></p></li>
+<% end %>
+</ul>
