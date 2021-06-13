@@ -15,7 +15,7 @@ class UsersController < ApplicationController
         #if u.email.blank? || u.password.blank? || User.find_by_email(params["email"])
         if !user.save
             flash[:message] = "Error! Please Try Again"
-            redirect '/signup' # maybe instead of redirecting to '/signup' redirect to failure or error page with a button to sign-up
+            redirect '/signup'
         else
             user.save
             session[:user_id] = user.id
@@ -35,12 +35,12 @@ class UsersController < ApplicationController
           redirect '/wines'
         else
             flash[:message] = "Error! Please Try Again"
-            redirect '/login' # do i want an error here? and then option to try logging in again?
+            redirect '/login' 
         end
     end
 
-    get "/users/:wine" do
-        @user = User.find_by(params[:wine]) #see all of the users wines
+    get "/users/:id" do
+        @user = User.find_by_id(params[:id]) #see all of the users wines
         erb :'users/show'
     end
 

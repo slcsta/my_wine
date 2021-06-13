@@ -31,7 +31,6 @@ class WinesController < ApplicationController
         @wine = Wine.new(params)
         @wine.user_id = session[:user_id] # setting that current_user to that wine
         @wine.save
-        # go to show or index after create a wine
         redirect :"wines/#{@wine.id}"
     end
 
