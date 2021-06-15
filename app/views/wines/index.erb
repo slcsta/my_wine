@@ -5,6 +5,10 @@
     <% @wines.each do |wine| %>
         <li><a href="/wines/<%= wine.id %>"><%= wine.producer_name %></a></li>
     <% end %>
+<% else %>
+    <h1>Notable Wines</h1>
+    <br>
+    <h2>Tracking Your Memorable Wines</h2>    
 <% end %>
 </ul>
 

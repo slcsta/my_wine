@@ -19,7 +19,7 @@ class UsersController < ApplicationController
         else
             user.save
             session[:user_id] = user.id
-            redirect '/login' 
+            redirect '/wines' 
         end
     end
 
@@ -39,11 +39,30 @@ class UsersController < ApplicationController
         end
     end
 
-    get "/users/:id" do
-        @user = User.find_by_id(params[:id]) #see all of the users wines
-        erb :'users/show'
+    get '/users/:id' do
+        #pseudocode
+        # find current user and set equal to @user
+        # access wines belonging to that user with @user.wines
+        # go to show page in user's views
+        # iterate over the array of wine objects to get producer_name for the list
+        # post controller action to display the producer_name of each wine belonging to the current user
+        # each wine in the user's list of wines should link to the individual wine page
+        
+        @user = User.find_by_id(params[:id])
+        if logged_in?
+            erb :'users/show'
+            
+        else
+            redirect '/login'
+        end
     end
 
+    # post '/users' do
+    #     # @user = 
+    #     # if
+    #     #     redirect "/users/#{@user.id}"
+    #     # end
+    # end
 
     post '/logout' do
         session.clear 
