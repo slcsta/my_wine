@@ -49,19 +49,19 @@ class UsersController < ApplicationController
         # each wine in the user's list of wines should link to the individual wine page
         
         @user = User.find_by_id(params[:id])
-        if logged_in?
-            erb :'users/show'
-            
-        else
-            redirect '/login'
-        end
+            erb :'users/show' 
+        # else
+        #     redirect '/login'
+        # end
     end
 
-    # post '/users' do
-    #     # @user = 
-    #     # if
-    #     #     redirect "/users/#{@user.id}"
-    #     # end
+    # post "/users" do
+    #     redirect_if_not_logged_in
+    #     #create new wines
+    #     # @wine = Wine.new(params)
+    #     # @wine.user_id = session[:user_id] # setting that current_user to that wine
+    #     # @wine.save
+    #     redirect :"users/#{@user.id}"
     # end
 
     post '/logout' do

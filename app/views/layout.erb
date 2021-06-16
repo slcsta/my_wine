@@ -19,7 +19,8 @@
       <% end %>
       <% if logged_in? %>
        <li><a href="/wines">Wines</a></li> 
-       <li><a href="/wines/new">Add Wine</a></li>
+       <li><a href="/wines/new">Add a Wine</a></li>
+       <li><a href="/users/<%=@current_user.id%>">My Wines</a></li>
       <% end %>
       </ul>
     </p>
