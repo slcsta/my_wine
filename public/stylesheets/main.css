@@ -1,9 +1,9 @@
 @media screen {
   /* --- Reset Styles --- */
+
   * {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    left-margin: 10px;
+    padding: 10x;
   }
 
   html, body {
@@ -11,12 +11,32 @@
     width: 100%;
   }
 
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+
   /* --- Welcome Page Styles --- */
   body {
-    background-color: lightblue;
-    color: #333;
+    background-image: url(https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F9%2F2017%2F06%2Ffwx-really-expensive-grapes-2000.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     font-family: Sans-Serif;
     line-height: 18px;
+  }
+
+  nav li {
+    display: inline;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 0;
+  }
+
+  nav li a {
+    color: white;
+    font-size: 150%;
+    font-family: Serif;
+    font-weight: medium;
   }
 
   .wrapper {
@@ -25,8 +45,8 @@
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
     box-shadow: 0 0 10px rgba(0,0,0,.3);
     margin: 16px auto;
-    max-width: 960px;
-    padding: 2.25%; /* 18px / 800px */
+    max-width: 500px;
+    padding: 1.5%; /* 18px / 800px */
     width: 85%;
   }
 
