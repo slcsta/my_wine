@@ -21,7 +21,7 @@
     background-image: url(https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F9%2F2017%2F06%2Ffwx-really-expensive-grapes-2000.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: Sans-Serif;
+    font-family: sans-serif;
     line-height: 18px;
   }
 
@@ -35,7 +35,7 @@
   nav li a {
     color: white;
     font-size: 150%;
-    font-family: Serif;
+    font-family: sans-serif;
     font-weight: medium;
   }
 
@@ -46,7 +46,7 @@
     box-shadow: 0 0 10px rgba(0,0,0,.3);
     margin: 16px auto;
     max-width: 500px;
-    padding: 1.5%; /* 18px / 800px */
+    padding: 1.5%; /* 180px / 800px */
     width: 85%;
   }
 
