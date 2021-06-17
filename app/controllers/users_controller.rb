@@ -6,8 +6,8 @@ class UsersController < ApplicationController
 
     post '/signup' do
         user = User.new(params)
-
-        if !user.save
+        if user.email.blank? || user.username.blank? || user.password.blank? || User.find_by_email(params["email"])
+        #if !user.save
             flash[:message] = "Error! Please Try Again"
             redirect '/signup'
         else
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
             redirect '/wines' 
         end
     end
-
+    
     get '/login' do
         erb :'users/login'
     end
@@ -41,4 +41,6 @@ class UsersController < ApplicationController
         session.clear 
         redirect '/wines'
     end
+
+    
 end

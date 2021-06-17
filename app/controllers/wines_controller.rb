@@ -1,13 +1,12 @@
 class WinesController < ApplicationController
 
     get "/wines" do
-        @wines = Wine.all #see all of the wines
+        @wines = Wine.all
         erb :'wines/index'
     end
 
     get "/wines/new" do 
         redirect_if_not_logged_in
-        #form for creating a new wine
         erb :'wines/new'
     end 
 
