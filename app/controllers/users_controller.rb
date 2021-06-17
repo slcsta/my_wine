@@ -6,13 +6,7 @@ class UsersController < ApplicationController
 
     post '/signup' do
         user = User.new(params)
-        # We need to:
-        # 1. instantiate a user
-        # 2. ensure user signed up with valid data
-        # 3. if user signed up successfully, then redirect
-        # 4. if user didn't sign up properly, then redirect back to the form
-    
-        #if u.email.blank? || u.password.blank? || User.find_by_email(params["email"])
+
         if !user.save
             flash[:message] = "Error! Please Try Again"
             redirect '/signup'
@@ -24,12 +18,11 @@ class UsersController < ApplicationController
     end
 
     get '/login' do
-        # render the view in app/views/users/login.erb
         erb :'users/login'
     end
     
     post '/login' do
-        user = User.find_by_email(params[:email]) # I don't think I need an instance variable here - *note:review that
+        user = User.find_by_email(params[:email]) 
         if user && user.authenticate(params[:password])
           session[:user_id] = user.id
           redirect '/wines'
@@ -40,29 +33,9 @@ class UsersController < ApplicationController
     end
 
     get '/users/:id' do
-        #pseudocode
-        # find current user and set equal to @user
-        # access wines belonging to that user with @user.wines
-        # go to show page in user's views
-        # iterate over the array of wine objects to get producer_name for the list
-        # post controller action to display the producer_name of each wine belonging to the current user
-        # each wine in the user's list of wines should link to the individual wine page
-        
         @user = User.find_by_id(params[:id])
-            erb :'users/show' 
-        # else
-        #     redirect '/login'
-        # end
+        erb :'users/show' 
     end
-
-    # post "/users" do
-    #     redirect_if_not_logged_in
-    #     #create new wines
-    #     # @wine = Wine.new(params)
-    #     # @wine.user_id = session[:user_id] # setting that current_user to that wine
-    #     # @wine.save
-    #     redirect :"users/#{@user.id}"
-    # end
 
     post '/logout' do
         session.clear 
